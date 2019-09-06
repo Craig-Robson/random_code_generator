@@ -43,7 +43,7 @@ def build_id(str_length, segments, seperator):
 
     return id_str[:-1]
 
-def main(length_of_string=6, number_of_segments=4, seperator='_'):
+def main(length_of_string=10, number_of_segments=1, seperator='_'):
     """Generate a random string with a defined length
     
     """

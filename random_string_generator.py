@@ -2,21 +2,22 @@ import random
 import string
 
 
-def RandomString(separator, strlength=20):
+def RandomString(separator, strlength=20, symbols):
     """Generate a string of random characters of length 6
     """
     
     strlength = strlength * 3
     
     # make list of possible characters for the string
-    characters = string.ascii_letters + string.digits #+ string.punctuation
+    characters = string.ascii_letters + string.digits
 
     # add some set character types
     rnd_str = random.choice(string.ascii_lowercase)
     rnd_str += random.choice(string.ascii_uppercase)
     rnd_str += random.choice(string.digits)
-    rnd_str += random.choice(['£', '$', '%', '&', '*', '@', '#'])
-    rnd_str += random.choice(['£', '$', '%', '&', '*', '@', '#'])
+    if symbols:
+        rnd_str += random.choice(['£', '$', '%', '&', '*', '@', '#'])
+        rnd_str += random.choice(['£', '$', '%', '&', '*', '@', '#'])
 
     # add random characters to get the correct length string
     for i in range(strlength-len(rnd_str)):
@@ -27,7 +28,7 @@ def RandomString(separator, strlength=20):
     random.SystemRandom().shuffle(rnd_lst)
     rnd_str = ''.join(rnd_lst)
 
-    # if an underscore in string replace as used as separator
+    # if defined separator in string replace
     while separator in rnd_str:
         rnd_str = rnd_str.replace(separator, random.choice(characters))
         
@@ -46,8 +47,8 @@ def build_id(str_length, segments, separator):
     return id_str[:-1]
 
 
-def main(length_of_string=10, number_of_segments=1, separator='_'):
+def main(length_of_string=10, number_of_segments=1, separator='_', symbols=False):
     """Generate a random string with a defined length
     
     """
-    return build_id(length_of_string, number_of_segments, separator)
+    return build_id(length_of_string, number_of_segments, separator, symbols)

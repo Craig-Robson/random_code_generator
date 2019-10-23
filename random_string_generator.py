@@ -2,7 +2,7 @@ import random
 import string
 
 
-def RandomString(separator, strlength=20, symbols):
+def RandomString(separator, strlength=20, symbols=False):
     """Generate a string of random characters of length 6
     """
     
@@ -16,8 +16,8 @@ def RandomString(separator, strlength=20, symbols):
     rnd_str += random.choice(string.ascii_uppercase)
     rnd_str += random.choice(string.digits)
     if symbols:
-        rnd_str += random.choice(['£', '$', '%', '&', '*', '@', '#'])
-        rnd_str += random.choice(['£', '$', '%', '&', '*', '@', '#'])
+        rnd_str += random.choice(['$', '%', '&', '*', '@', '#'])
+        rnd_str += random.choice(['$', '%', '&', '*', '@', '#'])
 
     # add random characters to get the correct length string
     for i in range(strlength-len(rnd_str)):

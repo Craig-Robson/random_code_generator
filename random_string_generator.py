@@ -35,14 +35,14 @@ def RandomString(separator, strlength=20, symbols=False):
     return rnd_str
 
 
-def build_id(str_length, segments, separator):
+def build_id(str_length, segments, separator, symbols):
     """Create a string with the given length and the number of segments
     """
 
     id_str = ''
     
     for i in range(segments):
-        id_str += RandomString(separator, str_length)[:str_length] + separator
+        id_str += RandomString(separator, str_length, symbols)[:str_length] + separator
 
     return id_str[:-1]
 

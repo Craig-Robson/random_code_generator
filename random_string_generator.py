@@ -2,11 +2,11 @@ import random
 import string
 
 
-def RandomString(separator, strlength=20, symbols=False):
+def RandomString(separator, string_length=20, symbols=False):
     """Generate a string of random characters of length 6
     """
     
-    strlength = strlength * 3
+    strlength = string_length * 3
     
     # make list of possible characters for the string
     characters = string.ascii_letters + string.digits
@@ -32,7 +32,7 @@ def RandomString(separator, strlength=20, symbols=False):
     while separator in rnd_str:
         rnd_str = rnd_str.replace(separator, random.choice(characters))
         
-    return rnd_str
+    return rnd_str[:string_length] + separator
 
 
 def build_id(str_length, segments, separator, symbols):
@@ -42,7 +42,7 @@ def build_id(str_length, segments, separator, symbols):
     id_str = ''
     
     for i in range(segments):
-        id_str += RandomString(separator, str_length, symbols)[:str_length] + separator
+        id_str += RandomString(separator, str_length, symbols)
 
     return id_str[:-1]
 

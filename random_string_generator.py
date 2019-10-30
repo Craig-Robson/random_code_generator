@@ -7,17 +7,23 @@ def RandomString(separator, string_length=20, symbols=False):
     """
     
     strlength = string_length * 3
-    
+    possible_symbols = ['$', '%', '&', '*', '@', '#']
+
     # make list of possible characters for the string
-    characters = string.ascii_letters + string.digits
+    if symbols is True:
+        characters = string.ascii_letters + string.digits
+        for sym in possible_symbols:
+            characters += sym
+    else:
+        characters = string.ascii_letters + string.digits
 
     # add some set character types
     rnd_str = random.choice(string.ascii_lowercase)
     rnd_str += random.choice(string.ascii_uppercase)
     rnd_str += random.choice(string.digits)
     if symbols:
-        rnd_str += random.choice(['$', '%', '&', '*', '@', '#'])
-        rnd_str += random.choice(['$', '%', '&', '*', '@', '#'])
+        rnd_str += random.choice(possible_symbols)
+        rnd_str += random.choice(possible_symbols)
 
     # add random characters to get the correct length string
     for i in range(strlength-len(rnd_str)):
